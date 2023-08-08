@@ -29,6 +29,6 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          automatic_release_tag: rosiecord_${{ steps.version.outputs.__DISCORD_VERSION }}
+          automatic_release_tag: variance_${{ steps.version.outputs.__DISCORD_VERSION }}
           title: Variance (Development Hell) ${{ steps.version.outputs.__DISCORD_VERSION }}
           files: Dist/*.ipa
