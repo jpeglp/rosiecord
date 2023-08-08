@@ -1,6 +1,6 @@
-# Rosiecord
+# the most discord client ever
 
-## A custom Enmity patcher with interchangeable fonts, icons, and tweaks :3
+## just rosiecord but with changes
 
 ### How to install
 
