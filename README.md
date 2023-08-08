@@ -6,6 +6,9 @@
 
 check the releases tab for the variance ipa, you can change the font you want or just go for the one that i recommend, which is quicksand.
 
+then i guess just enjoy! 
+https://i.ibb.co/m4Gc7c5/IMG-2786.png
+
 this is based off of rosiecord, go check it out!
 Created with <3 By **Rosie** in TypeScript :3
 
