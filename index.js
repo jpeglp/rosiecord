@@ -2,6 +2,7 @@
 * -~-~-~ Main Rosiecord Patch Script -~-~-~
 * Build to Patch Enmity, Icons, Fonts, and Other Tweaks into the Base Discord IPA.
 * Created by Rosie "Acquite" on Thursday 22nd December 2022.
+* Thank you Rosie!!!! :)
 * Last updated by Rosie "Acquite" on Thursday 6th July 2023.
 * Required Dependencies: plutil, local-dirs[Fonts, Packs, Icons, Patches{Required, Optional}], Azule, Theos, NodeJS (run `npm i`)
 */
@@ -99,15 +100,15 @@ const EntryPoint = async (index, ipaName) => {
                 const ipaStates = ipaList.map(ipa => new State('pending', ipa));
                 await Shell.write(`${M.CYAN}Packaging the ${M.PINK}Base IPAs${M.CYAN}. If an ${M.PINK}IPA${M.CYAN} has been ${M.GREEN}successfully${M.CYAN} packaged, it will look like this: ${M.BLUE}"${M.PINK}[${M.CYAN}+${M.PINK}]${M.GREEN} Example IPA${M.BLUE}"\n`);
                 await M.logCurrentState(ipaStates, "Base Font IPAs");
-                await Shell.runSilently(`zip -q -r Dist/Rosiecord-${ipaName.split("_")[1]}_GGSans-Font.ipa Payload & wait $!`, async (stderr, _) => {
+                await Shell.runSilently(`zip -q -r Dist/Variance-${ipaName.split("_")[1]}_GGSans-Font.ipa Payload & wait $!`, async (stderr, _) => {
                     ipaStates[0].state = stderr ? 'failure' : 'success';
                     await M.logCurrentState(ipaStates, 'Base Font IPAs');
                 });
                 await Shell.runSilently(`rm -rf Payload & wait $!`);
                 for (const Font of ipaList.filter(ipa => ipa !== 'GGSans')) {
-                    await Shell.runSilently(`unzip -qq -o Dist/Rosiecord-${ipaName.split("_")[1]}_GGSans-Font.ipa`);
+                    await Shell.runSilently(`unzip -qq -o Dist/Variance-${ipaName.split("_")[1]}_GGSans-Font.ipa`);
                     await Shell.runSilently(`cp -rf Fonts/woff2/${Font}/* Payload/Discord.app/`);
-                    await Shell.runSilently(`zip -q -r Dist/Rosiecord-${ipaName.split("_")[1]}_${Font}-Font.ipa Payload & wait $!`);
+                    await Shell.runSilently(`zip -q -r Dist/Variance-${ipaName.split("_")[1]}_${Font}-Font.ipa Payload & wait $!`);
                     await Shell.runSilently(`rm -rf Payload & wait $!`);
                     ((_a = ipaStates.find(ipa => ipa.name === Font)) !== null && _a !== void 0 ? _a : { state: null }).state = 'success';
                     await M.logCurrentState(ipaStates, "Base Font IPAs");
@@ -232,10 +233,10 @@ const main = async () => {
     });
     await D.logDivider();
     const MAIN_PLIST = `Payload/Discord.app/Info.plist`;
-    const name = "Rosiecord";
+    const name = "Variance";
     await Shell.write(`${S.PENDING}${M.CYAN} Replacing Discord's Name To ${M.PINK}\"${name}\".${M.ENDC}\r`);
     await Shell.runSilently(`plutil -replace CFBundleName -string "${name}" ${MAIN_PLIST} & wait $!`);
-    await Shell.runSilently(`plutil -replace CFBundleDisplayName -string "Rosiecord" ${MAIN_PLIST} & wait $!`, (stderr) => {
+    await Shell.runSilently(`plutil -replace CFBundleDisplayName -string "Variance" ${MAIN_PLIST} & wait $!`, (stderr) => {
         Shell.write(stderr
             ? `${S.FAILURE} An error occurred while Replacing ${M.PINK}\"Discord's Name\".${M.ENDC}\n`
             : `${S.SUCCESS} Successfully Replaced ${M.PINK}\"Discord's Name\"${M.GREEN} to ${M.PINK}\"${name}\".${M.ENDC}\n`);
@@ -302,6 +303,6 @@ const main = async () => {
     // )
     // errors.length > 0 && Shell.write(errors);
     const END_TIME = Date.now();
-    await Shell.write(`${S.SUCCESS} Successfully built ${M.PINK}Rosiecord${M.GREEN} in ${M.CYAN}${(END_TIME - START_TIME) / 1000} seconds${M.GREEN}.`);
+    await Shell.write(`${S.SUCCESS} Successfully built ${M.PINK}Variance${M.GREEN} in ${M.CYAN}${(END_TIME - START_TIME) / 1000} seconds${M.GREEN}.`);
 };
 await main();
