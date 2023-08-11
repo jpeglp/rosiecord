@@ -6,9 +6,8 @@
 
 check the releases tab for the variance ipa, you can change the font you want or just go for the one that i recommend, which is quicksand.
 
-then i guess just enjoy! 
-### variance stamp of approval :)
-<div style='display: flex;' align='left'>
+then enjoy! 
+ <div style='display: flex;' align='left'>
   <img width="250" alt="variance stamp of approval" src="/Mocks/Dark%402x.png">
 </div>
 
