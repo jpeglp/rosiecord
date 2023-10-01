@@ -1,4 +1,4 @@
-name: Build Enmity and Inject Rosiecord
+name: Build Variance
 on:
   push:
   workflow_dispatch:
